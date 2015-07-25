@@ -34,7 +34,9 @@ var get = function(page, callback){
   request({url: uri, gzip: true, json:true}, function(err, res, body){
 
     if(err || res.StatusCode !== 200){
-      console.log(err, res.statusMessage, body);
+      if(err) console.log(err);
+      if(res) console.log(res.statusMessage);
+      if(body) console.log(body);
       return
     }
 
