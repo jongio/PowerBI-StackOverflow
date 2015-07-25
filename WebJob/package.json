@@ -1,0 +1,33 @@
+{
+  "name": "powerbi-stackoverflow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "run.js",
+  "dependencies": {
+    "moment": "^2.10.3",
+    "mssql": "^2.1.6",
+    "node-env-file": "^0.1.7",
+    "request": "^2.60.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonbgallant/PowerBI-StackOverflow.git"
+  },
+  "keywords": [
+    "powerbi",
+    "stackoverflow",
+    "api",
+    "data",
+    "bi"
+  ],
+  "author": "Jon Gallant <jon@jongallant.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jonbgallant/PowerBI-StackOverflow/issues"
+  },
+  "homepage": "https://github.com/jonbgallant/PowerBI-StackOverflow#readme"
+}
