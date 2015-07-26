@@ -33,9 +33,9 @@ var get = function(page, callback){
 
   request({url: uri, gzip: true, json:true}, function(err, res, body){
 
-    if(err || res.StatusCode !== 200){
-      if(err) console.log(err);
-      if(res) console.log(res.statusMessage);
+    if(err || res.statusCode !== 200){
+      if(err) console.log('ERROR:', err);
+      if(res) console.log(res.statusCode, res.statusMessage);
       if(body) console.log(body);
       return
     }
@@ -56,11 +56,12 @@ var upsert = function(items){
 
   var connection = new sql.Connection(config, function(err){
     if(err){
-      console.log(err);
+      console.log('ERROR:', err);
       return;
     }
 
     items.forEach(function(item){
+      console.log('Upserting question_id: %s, title: %s', item.question_id, item.title);
       var request = new sql.Request(connection);
       request.input('question_id', sql.Int, item.question_id);
       request.input('link', sql.NVarChar, item.link);
@@ -77,12 +78,12 @@ var upsert = function(items){
 
       request.execute('questions_upsert', function(err, recordsets, returnValue){
         if(err){
-          console.log(err);
+          console.log('ERROR:', err);
           return;
         }
 
         if(returnValue !== 0){
-          console.log('upsert error for question_id: ' + item.question_id);
+          console.log('ERROR: upsert error for question_id: ' + item.question_id);
           return;
         }
       });
