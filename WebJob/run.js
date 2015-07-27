@@ -1,11 +1,10 @@
-var env = require('node-env-file');
 var sql = require('mssql');
 var request = require('request');
 var util = require('util');
 var url = require('url');
 var moment = require('moment');
 
-env(__dirname + '/.env');
+require('dotenv').load({silent:true});
 
 var config = {
   user: process.env.user,
@@ -20,13 +19,14 @@ var config = {
 var get = function(page, callback){
 
   var uri = util.format(
-    'https://api.stackexchange.com/%s/questions?page=%s&pagesize=%s&tagged=%s&site=%s&filter=%s',
+    'https://api.stackexchange.com/%s/questions?page=%s&pagesize=%s&tagged=%s&site=%s&filter=%s&key=%s',
     process.env.api_version,
     page,
     process.env.page_size,
     process.env.tag,
     process.env.site,
-    process.env.filter
+    process.env.filter,
+    process.env.key
   );
 
   console.log('Getting page %s', page, uri);
@@ -37,7 +37,7 @@ var get = function(page, callback){
       if(err) console.log('ERROR:', err);
       if(res) console.log(res.statusCode, res.statusMessage);
       if(body) console.log(body);
-      return
+      throw err;
     }
 
     if(body.items && body.items.length > 0)
@@ -57,7 +57,7 @@ var upsert = function(items){
   var connection = new sql.Connection(config, function(err){
     if(err){
       console.log('ERROR:', err);
-      return;
+      throw err;
     }
 
     items.forEach(function(item){
@@ -77,14 +77,9 @@ var upsert = function(items){
       request.input('is_answered', sql.Bit, item.is_answered);
 
       request.execute('questions_upsert', function(err, recordsets, returnValue){
-        if(err){
-          console.log('ERROR:', err);
-          return;
-        }
-
-        if(returnValue !== 0){
+        if(err || returnValue !== 0){
           console.log('ERROR: upsert error for question_id: ' + item.question_id);
-          return;
+          throw err;
         }
       });
     });

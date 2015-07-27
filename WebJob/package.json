@@ -4,9 +4,9 @@
   "description": "",
   "main": "run.js",
   "dependencies": {
+    "dotenv": "^1.2.0",
     "moment": "^2.10.3",
     "mssql": "^2.1.6",
-    "node-env-file": "^0.1.7",
     "request": "^2.60.0"
   },
   "devDependencies": {},

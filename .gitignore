@@ -1,4 +1,5 @@
 *.env
+run.zip
 
 # Logs
 logs
