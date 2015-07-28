@@ -1,0 +1,35 @@
+{
+  "name": "powerbi-stackoverflow",
+  "version": "1.0.0",
+  "description": "Node.js script that syncs StackOverflow questions to a SQL database to be consumed by Power BI",
+  "main": "run.js",
+  "dependencies": {
+    "dotenv": "^1.2.0",
+    "moment": "^2.10.3",
+    "mssql": "^2.1.6",
+    "request": "^2.60.0"
+  },
+  "devDependencies": {
+    "standard": "^4.5.4"
+  },
+  "scripts": {
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonbgallant/PowerBI-StackOverflow.git"
+  },
+  "keywords": [
+    "powerbi",
+    "stackoverflow",
+    "api",
+    "data",
+    "bi"
+  ],
+  "author": "jonbgallant",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jonbgallant/PowerBI-StackOverflow/issues"
+  },
+  "homepage": "https://github.com/jonbgallant/PowerBI-StackOverflow#readme"
+}
