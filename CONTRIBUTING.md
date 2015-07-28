@@ -1,9 +1,17 @@
-#How to contribute
+# Contributing
 
-Contributing to the PowerBI-StackOverflow repo is easy
+1. Fork it
+2. `npm install`
+3. Create your feature branch (`git checkout -b my-new-feature`)
+4. Commit your changes (`git commit -am 'Added some feature'`)
+5. `npm run lint`
+6. Push to the branch (`git push origin my-new-feature`)
+7. Create new Pull Request
 
-1. Fork the repo to your GitHub Account
-2. Commit to your fork's develop branch
-3. Pull request from your fork's develop branch to PowerBI-StackOverflow's develop branch
+## Code Style
 
-It's just me working on this; no commmitte to review changes, so turnaround will be fast.
+We use [standard](https://www.npmjs.com/package/standard) and [editorconfig](http://editorconfig.org) to maintain code style and best practices. Please make sure your PR adheres to the guides by running:
+
+```
+npm run lint
+```
