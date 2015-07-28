@@ -2,11 +2,11 @@
 
 1. Fork it
 2. `npm install`
-3. Create your feature branch (`git checkout -b my-new-feature`)
-4. Commit your changes (`git commit -am 'Added some feature'`)
+3. Checkout the develop branch `git checkout develop`
+4. Commit your changes (`git commit -am 'Fixed some bug'`)
 5. `npm run lint`
-6. Push to the branch (`git push origin my-new-feature`)
-7. Create new Pull Request
+6. Push to the develop branch (`git push origin develop`)
+7. Create new Pull Request against the develop branch
 
 ## Code Style
 
